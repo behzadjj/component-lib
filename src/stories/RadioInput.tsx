@@ -1,6 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import { FieldErrors, FieldValues } from "react-hook-form";
 
+import "./RadioInput.scss";
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   options: Array<{
     key: string;
@@ -19,7 +20,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 export const RadioInput = ({
   options = [],
   label,
-  containerClassName = "",
+  containerClassName = "radio-input",
   labelClassName = "",
   errorClassName = "",
   className = "",
@@ -35,9 +36,9 @@ export const RadioInput = ({
         </div>
       )}
       {options.map((option) => (
-        <label htmlFor={option.value?.toString()}>
+        <label className="input--option" htmlFor={option.value?.toString()}>
           <div className={"input--option--label"}>{option.key}</div>
-          <div className={"input--main" + className}>
+          <div className={"input--option-main" + className}>
             <input
               id={option.value?.toString()}
               name={name}
