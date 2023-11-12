@@ -1,6 +1,7 @@
 import { InputHTMLAttributes } from "react";
 import { FieldErrors, FieldValues } from "react-hook-form";
 
+import "./CheckboxInput.scss";
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   className?: string;
@@ -14,7 +15,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export const CheckboxInput = ({
   label,
-  containerClassName,
+  containerClassName = "checkbox-input",
   labelClassName = "",
   errorClassName = "",
   className = "",
