@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from "react";
 import { FieldErrors, FieldValues } from "react-hook-form";
 
+import "./TextAreaInput.scss";
+
 interface Props extends InputHTMLAttributes<HTMLTextAreaElement> {
   name: string;
   className?: string;
@@ -9,13 +11,14 @@ interface Props extends InputHTMLAttributes<HTMLTextAreaElement> {
   containerClassName?: string;
   errorClassName?: string;
   errors?: FieldErrors<FieldValues>;
+  onClearClicked?: () => void;
   onChange?: (...event: unknown[]) => void;
 }
 
 export const TextareaInput = ({
   label,
   placeholder,
-  containerClassName = "",
+  containerClassName = "textarea-input",
   labelClassName = "",
   errorClassName = "",
   className = "",
@@ -31,7 +34,9 @@ export const TextareaInput = ({
         </div>
       )}
       <div className={"input--main" + className}>
-        <textarea id={name} {...rest}>{placeholder}</textarea>
+        <textarea id={name} {...rest}>
+          {placeholder}
+        </textarea>
       </div>
       {errors && errors[name] && (
         <p className={"input--error " + errorClassName} role="alert">

@@ -11,6 +11,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   containerClassName?: string;
   errorClassName?: string;
   errors?: FieldErrors<FieldValues>;
+  onClearClicked?: () => void;
   onChange?: (...event: unknown[]) => void;
 }
 
@@ -21,6 +22,7 @@ export const TextInput = ({
   errorClassName = "",
   className = "",
   name = "textInput",
+  onClearClicked,
   errors,
   ...rest
 }: Props) => {
@@ -33,7 +35,9 @@ export const TextInput = ({
       )}
       <div className={"input--main" + className}>
         <input type="text" id={name} {...rest} />
-        <button type="button">X</button>
+        <button onClick={onClearClicked} type="button">
+          X
+        </button>
       </div>
       {errors && errors[name] && (
         <p className={"input--error " + errorClassName} role="alert">
