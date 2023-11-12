@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from "react";
 import { FieldErrors, FieldValues } from "react-hook-form";
 
+import "./TextInput.scss";
+
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   className?: string;
@@ -14,7 +16,7 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
 
 export const TextInput = ({
   label,
-  containerClassName = "",
+  containerClassName = "text-input",
   labelClassName = "",
   errorClassName = "",
   className = "",
@@ -31,6 +33,7 @@ export const TextInput = ({
       )}
       <div className={"input--main" + className}>
         <input type="text" id={name} {...rest} />
+        <button type="button">X</button>
       </div>
       {errors && errors[name] && (
         <p className={"input--error " + errorClassName} role="alert">

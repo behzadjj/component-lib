@@ -23,7 +23,7 @@ export const LabelLess: Story = {
   args: {
     name: "textInput",
     className: "",
-    placeholder: "placeholder",
+    placeholder: "Placeholder",
   },
 };
 
@@ -32,6 +32,6 @@ export const Label: Story = {
     name: "textInput",
     label: "label",
     className: "",
-    placeholder: "placeholder",
+    placeholder: "Placeholder",
   },
 };
