@@ -8,6 +8,7 @@ import {
   SelectController,
   TextareaController,
 } from "./InputController";
+import { Button } from "../Button";
 
 const schema = yup
   .object({
@@ -65,7 +66,7 @@ export const Form = () => {
           ]}
         />
         <CheckboxController name="acceptCondition" label="Accept Condition" />
-        <input type="submit" />
+        <Button label="Submit" type="submit" />
       </form>
     </FormProvider>
   );

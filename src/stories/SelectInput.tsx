@@ -1,6 +1,8 @@
 import { InputHTMLAttributes } from "react";
 import { FieldErrors, FieldValues } from "react-hook-form";
 
+import "./SelectInput.scss";
+
 interface Props extends InputHTMLAttributes<HTMLSelectElement> {
   options: Array<{
     key: string;
@@ -13,17 +15,19 @@ interface Props extends InputHTMLAttributes<HTMLSelectElement> {
   containerClassName?: string;
   errorClassName?: string;
   errors?: FieldErrors<FieldValues>;
+  onClearClicked?: () => void;
   onChange?: (...event: unknown[]) => void;
 }
 
 export const SelectInput = ({
   options = [],
   label,
-  containerClassName = "",
+  containerClassName = "select-input",
   labelClassName = "",
   errorClassName = "",
   className = "",
   name,
+  onClearClicked,
   errors,
   ...rest
 }: Props) => {
@@ -42,6 +46,9 @@ export const SelectInput = ({
             </option>
           ))}
         </select>
+        <button onClick={onClearClicked} type="button">
+          X
+        </button>
       </div>
       {errors && errors[name] && (
         <p className={"input--error " + errorClassName} role="alert">

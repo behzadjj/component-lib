@@ -1,6 +1,8 @@
+import { InputHTMLAttributes } from "react";
+
 import "./button.css";
 
-interface ButtonProps {
+interface ButtonProps extends InputHTMLAttributes<HTMLButtonElement> {
   /**
    * Is this the principal call to action on the page?
    */
@@ -12,7 +14,7 @@ interface ButtonProps {
   /**
    * How large should the button be?
    */
-  size?: "small" | "medium" | "large";
+  buttonSize?: "small" | "medium" | "large";
   /**
    * Button contents
    */
@@ -28,7 +30,7 @@ interface ButtonProps {
  */
 export const Button = ({
   primary = false,
-  size = "medium",
+  buttonSize = "medium",
   backgroundColor,
   label,
   ...props
@@ -39,9 +41,11 @@ export const Button = ({
   return (
     <button
       type="button"
-      className={["storybook-button", `storybook-button--${size}`, mode].join(
-        " "
-      )}
+      className={[
+        "storybook-button",
+        `storybook-button--${buttonSize}`,
+        mode,
+      ].join(" ")}
       style={{ backgroundColor }}
       {...props}
     >
